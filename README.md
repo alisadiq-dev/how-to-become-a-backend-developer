@@ -1,4 +1,4 @@
- # Backend Engineering Journey 🚀
+ # Backend Engineering Journey 
 
 ## Day 01 - Modern Python + Virtual Environment (Completed Nov 17, 2025)
 
