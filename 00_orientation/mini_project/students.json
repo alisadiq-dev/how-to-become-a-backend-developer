@@ -1,0 +1,43 @@
+[
+  {
+    "name": "Ali Sadiq",
+    "age": 20,
+    "grades": [
+      85,
+      90,
+      88,
+      92,
+      94
+    ]
+  },
+  {
+    "name": "Sara Ahmed",
+    "age": 19,
+    "grades": [
+      92,
+      88,
+      95,
+      90
+    ]
+  },
+  {
+    "name": "Ahmed Khan",
+    "age": 21,
+    "grades": [
+      85,
+      88,
+      90,
+      87
+    ]
+  },
+  {
+    "name": "Fatima Ali",
+    "age": 20,
+    "grades": [
+      95,
+      98,
+      94,
+      96
+    ]
+  }
+]
