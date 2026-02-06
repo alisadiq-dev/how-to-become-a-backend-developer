@@ -41,14 +41,12 @@ class Student:
         Raises:
             ValueError: If age is negative or grades are invalid
         """
-        # Input validation (exception handling concept)
         if age < 0:
             raise ValueError("Age cannot be negative")
         
         if not all(0 <= grade <= 100 for grade in grades):
             raise ValueError("Grades must be between 0 and 100")
         
-        # Instance attributes - unique to each student object
         self.name = name
         self.age = age
         self.grades = grades
@@ -59,17 +57,10 @@ class Student:
         
         Returns:
             float: Average grade rounded to 2 decimal places
-        
-        This demonstrates:
-        - Method definition
-        - Working with lists (sum, len)
-        - Conditional logic
-        - Return values
         """
         if not self.grades:
             return 0.0
         
-        # Calculate average: sum of all grades divided by count
         average = sum(self.grades) / len(self.grades)
         return round(average, 2)
     
@@ -94,10 +85,6 @@ class Student:
         
         Returns:
             dict: Student data as dictionary
-        
-        This demonstrates:
-        - Converting objects to dictionaries
-        - Preparing data for file storage
         """
         return {
             "name": self.name,
@@ -107,14 +94,10 @@ class Student:
     
     def __str__(self) -> str:
         """
-        String representation of student (for printing).
+        String representation of student for printing.
         
         Returns:
             str: Formatted student information
-        
-        This demonstrates:
-        - Magic methods (__str__)
-        - f-strings for formatting
         """
         avg = self.get_average()
         return f"Student: {self.name}, Age: {self.age}, Average: {avg}"
@@ -124,13 +107,7 @@ class StudentManager:
     """
     Manages a collection of students with CRUD operations.
     
-    CRUD = Create, Read, Update, Delete
-    
-    This class demonstrates:
-    - Managing collections of objects
-    - File I/O (reading/writing JSON)
-    - Exception handling
-    - List operations and comprehensions
+    CRUD operations: Create, Read, Update, Delete
     """
     
     def __init__(self, filename: str = "students.json"):
@@ -140,7 +117,7 @@ class StudentManager:
         Args:
             filename (str): Name of JSON file for data persistence
         """
-        self.students: List[Student] = []  # List to store Student objects
+        self.students: List[Student] = []
         self.filename = filename
     
     def add_student(self, student: Student) -> None:
@@ -149,32 +126,22 @@ class StudentManager:
         
         Args:
             student (Student): Student object to add
-        
-        This demonstrates:
-        - Adding items to lists
-        - Working with objects
         """
         self.students.append(student)
-        print(f"✅ Added student: {student.name}")
+        print(f"Added student: {student.name}")
     
     def view_all_students(self) -> None:
         """
         Display all students in the system.
-        
-        This demonstrates:
-        - Looping through lists
-        - Conditional logic (if/else)
-        - String formatting
         """
         if not self.students:
-            print("📭 No students in the system.")
+            print("No students in the system.")
             return
         
         print("\n" + "="*50)
-        print("📚 ALL STUDENTS")
+        print("ALL STUDENTS")
         print("="*50)
         
-        # Loop through each student and display info
         for i, student in enumerate(self.students, 1):
             print(f"{i}. {student}")
         
@@ -189,21 +156,15 @@ class StudentManager:
         
         Returns:
             Student or None: Found student or None if not found
-        
-        This demonstrates:
-        - List comprehension with filtering
-        - Conditional logic
-        - Return values
         """
-        # List comprehension: filter students by name
-        found = [s for s in self.students if s.name.lower() == name.lower()]
+        found = [s for s in self.students if s.name.lower() == name.lower()]  
         
         if found:
             student = found[0]
-            print(f"🔍 Found: {student}")
+            print(f"Found: {student}")
             return student
         else:
-            print(f"❌ Student '{name}' not found.")
+            print(f"Student '{name}' not found.")
             return None
     
     def update_grades(self, name: str, new_grades: List[float]) -> None:
@@ -213,22 +174,17 @@ class StudentManager:
         Args:
             name (str): Student name
             new_grades (list): New list of grades
-        
-        This demonstrates:
-        - Searching and updating data
-        - Modifying object attributes
         """
         student = self.search_student(name)
         
         if student:
-            # Validate new grades
             if not all(0 <= grade <= 100 for grade in new_grades):
-                print("❌ All grades must be between 0 and 100")
+                print("All grades must be between 0 and 100")
                 return
             
             student.grades = new_grades
-            print(f"✅ Updated grades for {name}")
-            print(f"   New average: {student.get_average()}")
+            print(f"Updated grades for {name}")
+            print(f"New average: {student.get_average()}")
     
     def delete_student(self, name: str) -> None:
         """
@@ -236,16 +192,12 @@ class StudentManager:
         
         Args:
             name (str): Student name to delete
-        
-        This demonstrates:
-        - Removing items from lists
-        - List comprehension for filtering
         """
         student = self.search_student(name)
         
         if student:
             self.students.remove(student)
-            print(f"🗑️  Deleted student: {name}")
+            print(f"Deleted student: {name}")
     
     def calculate_average(self, name: str) -> Optional[float]:
         """
@@ -261,7 +213,7 @@ class StudentManager:
         
         if student:
             avg = student.get_average()
-            print(f"📊 {name}'s average: {avg}")
+            print(f"{name}'s average: {avg}")
             return avg
         
         return None
@@ -272,16 +224,10 @@ class StudentManager:
         
         Returns:
             dict: Statistics including class average, highest, lowest
-        
-        This demonstrates:
-        - List comprehensions
-        - Built-in functions (max, min, sum, len)
-        - Dictionary creation
         """
         if not self.students:
             return {"message": "No students to calculate statistics"}
         
-        # List comprehension: get all averages
         averages = [s.get_average() for s in self.students]
         
         stats = {
@@ -299,28 +245,20 @@ class StudentManager:
         
         Args:
             filename (str, optional): Custom filename (uses default if None)
-        
-        This demonstrates:
-        - File I/O (writing)
-        - JSON serialization
-        - Exception handling
-        - List comprehensions
         """
         if filename is None:
             filename = self.filename
         
         try:
-            # Convert all Student objects to dictionaries
             data = [student.to_dict() for student in self.students]
             
-            # Write to JSON file with nice formatting (indent=2)
             with open(filename, 'w') as file:
                 json.dump(data, file, indent=2)
             
-            print(f"💾 Saved {len(self.students)} student(s) to {filename}")
+            print(f"Saved {len(self.students)} student(s) to {filename}")
         
         except Exception as e:
-            print(f"❌ Error saving to file: {e}")
+            print(f"Error saving to file: {e}")
     
     def load_from_file(self, filename: Optional[str] = None) -> None:
         """
@@ -328,25 +266,16 @@ class StudentManager:
         
         Args:
             filename (str, optional): Custom filename (uses default if None)
-        
-        This demonstrates:
-        - File I/O (reading)
-        - JSON deserialization
-        - Exception handling (multiple except blocks)
-        - Creating objects from data
         """
         if filename is None:
             filename = self.filename
         
         try:
-            # Read JSON file
             with open(filename, 'r') as file:
                 data = json.load(file)
             
-            # Clear current students
             self.students = []
             
-            # Create Student objects from data
             for student_data in data:
                 student = Student(
                     name=student_data['name'],
@@ -355,21 +284,20 @@ class StudentManager:
                 )
                 self.students.append(student)
             
-            print(f"📂 Loaded {len(self.students)} student(s) from {filename}")
+            print(f"Loaded {len(self.students)} student(s) from {filename}")
         
         except FileNotFoundError:
-            print(f"⚠️  File '{filename}' not found. Starting with empty student list.")
+            print(f"File '{filename}' not found. Starting with empty student list.")
         
         except json.JSONDecodeError:
-            print(f"❌ Error reading '{filename}'. File may be corrupted.")
+            print(f"Error reading '{filename}'. File may be corrupted.")
         
         except Exception as e:
-            print(f"❌ Unexpected error loading file: {e}")
+            print(f"Unexpected error loading file: {e}")
 
 
-# Example usage (when running this file directly)
 if __name__ == "__main__":
-    print("🎓 Student Management System")
+    print("Student Management System")
     print("="*50)
     print("\nThis is the main module. Import it to use the classes.")
     print("\nQuick start:")
