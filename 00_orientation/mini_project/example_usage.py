@@ -14,32 +14,23 @@ from student_manager import Student, StudentManager
 def print_section(title):
     """Helper function to print section headers"""
     print("\n" + "="*60)
-    print(f"  {title}")
+    print(f"  {{title}}")
     print("="*60)
 
 def main():
-    """
-    Main function demonstrating all features of the Student Management System.
-    """
+    """Main function demonstrating all features of the Student Management System."""
     
     print("\nSTUDENT MANAGEMENT SYSTEM - DEMO")
     print("="*60)
     print("This demo shows all features of the system.\n")
     
-    # ========================================
-    # 1. CREATE STUDENT MANAGER
-    # ========================================
     print_section("Step 1: Creating Student Manager")
     
     manager = StudentManager()
     print("SUCCESS: StudentManager created successfully!")
     
-    # ========================================
-    # 2. CREATE STUDENTS
-    # ========================================
     print_section("Step 2: Creating Students")
     
-    # Create student objects with different data
     student1 = Student("Ali Sadiq", 20, [85, 90, 88, 92])
     student2 = Student("Sara Ahmed", 19, [92, 88, 95, 90])
     student3 = Student("Ahmed Khan", 21, [78, 82, 80, 85])
@@ -47,9 +38,6 @@ def main():
     
     print("SUCCESS: Created 4 student objects")
     
-    # ========================================
-    # 3. ADD STUDENTS TO MANAGER
-    # ========================================
     print_section("Step 3: Adding Students to Manager")
     
     manager.add_student(student1)
@@ -59,16 +47,10 @@ def main():
     
     print("SUCCESS: Added 4 students to manager")
     
-    # ========================================
-    # 4. VIEW ALL STUDENTS
-    # ========================================
     print_section("Step 4: Viewing All Students")
     
     manager.view_all_students()
     
-    # ========================================
-    # 5. SEARCH FOR A STUDENT
-    # ========================================
     print_section("Step 5: Searching for a Student")
     
     print("\nSearching for 'Sara Ahmed'...")
@@ -77,17 +59,11 @@ def main():
     print("\nSearching for 'John Doe' (doesn't exist)...")
     manager.search_student("John Doe")
     
-    # ========================================
-    # 6. CALCULATE AVERAGE
-    # ========================================
     print_section("Step 6: Calculating Student Average")
     
     manager.calculate_average("Ali Sadiq")
     manager.calculate_average("Fatima Ali")
     
-    # ========================================
-    # 7. UPDATE GRADES
-    # ========================================
     print_section("Step 7: Updating Student Grades")
     
     print("\nUpdating Ahmed Khan's grades...")
@@ -95,55 +71,37 @@ def main():
     print("   New grades: [85, 88, 90, 87]")
     manager.update_grades("Ahmed Khan", [85, 88, 90, 87])
     
-    # ========================================
-    # 8. ADD A NEW GRADE
-    # ========================================
     print_section("Step 8: Adding a New Grade")
     
     print("\nAdding a new grade to Ali Sadiq...")
     student1.add_grade(94)
-    print(f"SUCCESS: New grades: {student1.grades}")
-    print(f"        New average: {student1.get_average()}")
+    print(f"SUCCESS: New grades: {{student1.grades}}")
+    print(f"        New average: {{student1.get_average()}}")
     
-    # ========================================
-    # 9. CLASS STATISTICS
-    # ========================================
     print_section("Step 9: Class Statistics")
     
     stats = manager.get_class_statistics()
     print("\nClass Statistics:")
-    print(f"   Total Students: {stats['total_students']}")
-    print(f"   Class Average: {stats['class_average']}")
-    print(f"   Highest Average: {stats['highest_average']}")
-    print(f"   Lowest Average: {stats['lowest_average']}")
+    print(f"   Total Students: {{stats['total_students']}}")
+    print(f"   Class Average: {{stats['class_average']}}")
+    print(f"   Highest Average: {{stats['highest_average']}}")
+    print(f"   Lowest Average: {{stats['lowest_average']}}")
     
-    # ========================================
-    # 10. SAVE TO FILE
-    # ========================================
     print_section("Step 10: Saving Data to File")
     
     manager.save_to_file()
     print("SUCCESS: Data saved to 'students.json'")
     
-    # ========================================
-    # 11. LOAD FROM FILE
-    # ========================================
     print_section("Step 11: Loading Data from File")
     
-    # Create a new manager to demonstrate loading
     new_manager = StudentManager()
     print("Created new manager (empty)")
     
-    # Load data from file
     new_manager.load_from_file()
     
-    # Verify data was loaded
     print("\nVerifying loaded data:")
     new_manager.view_all_students()
     
-    # ========================================
-    # 12. DELETE A STUDENT
-    # ========================================
     print_section("Step 12: Deleting a Student")
     
     print("\nDeleting 'Ahmed Khan'...")
@@ -152,26 +110,20 @@ def main():
     print("\nStudents after deletion:")
     manager.view_all_students()
     
-    # ========================================
-    # 13. EXCEPTION HANDLING DEMO
-    # ========================================
     print_section("Step 13: Exception Handling Demo")
     
     print("\nTrying to create student with negative age...")
     try:
         invalid_student = Student("Invalid Student", -5, [80, 85])
     except ValueError as e:
-        print(f"ERROR: {e}")
+        print(f"ERROR: {{e}}")
     
     print("\nTrying to add invalid grade...")
     try:
-        student1.add_grade(150)  # Grade > 100
+        student1.add_grade(150)
     except ValueError as e:
-        print(f"ERROR: {e}")
+        print(f"ERROR: {{e}}")
     
-    # ========================================
-    # FINAL SUMMARY
-    # ========================================
     print_section("DEMO COMPLETE")
     
     print("\nWhat you learned:")
