@@ -1,0 +1,71 @@
+{
+  "books": [
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "isbn": "978-0-7432-7356-5",
+      "category": "Fiction",
+      "is_available": true
+    },
+    {
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "isbn": "978-0-06-112008-4",
+      "category": "Fiction",
+      "is_available": true
+    },
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "isbn": "978-0-452-28423-4",
+      "category": "Fiction",
+      "is_available": false
+    },
+    {
+      "title": "Sapiens",
+      "author": "Yuval Noah Harari",
+      "isbn": "978-0-06-231609-7",
+      "category": "Non-Fiction",
+      "is_available": true
+    },
+    {
+      "title": "Educated",
+      "author": "Tara Westover",
+      "isbn": "978-0-399-59050-4",
+      "category": "Non-Fiction",
+      "is_available": false
+    },
+    {
+      "title": "Python Crash Course",
+      "author": "Eric Matthes",
+      "isbn": "978-1-59327-928-8",
+      "category": "Programming",
+      "is_available": false
+    }
+  ],
+  "members": [
+    {
+      "name": "Ali Sadiq",
+      "member_id": "M001",
+      "email": "ali@example.com",
+      "borrowed_books": [
+        "978-0-452-28423-4",
+        "978-0-399-59050-4"
+      ]
+    },
+    {
+      "name": "Sara Ahmed",
+      "member_id": "M002",
+      "email": "sara@example.com",
+      "borrowed_books": []
+    },
+    {
+      "name": "Ahmed Khan",
+      "member_id": "M003",
+      "email": "ahmed@example.com",
+      "borrowed_books": [
+        "978-1-59327-928-8"
+      ]
+    }
+  ]
+}
